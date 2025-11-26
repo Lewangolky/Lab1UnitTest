@@ -3,19 +3,17 @@ name: Build and Deploy Docs
 on:
   push:
     branches:
-      - main                  
-      - feature/docs-ci       
-  workflow_dispatch:          
+      - main
+      - docs-ci
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up QEMU (optional)
 
       - name: Install Doxygen and Graphviz
         run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
@@ -24,19 +22,19 @@ jobs:
         run: doxygen Doxyfile
 
       - name: List html output (debug)
-        run: ls -la html || true
+        run: ls -la docs/html || true
 
       - name: Upload documentation artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: html
+          path: docs/html   # ← ПРАВИЛЬНИЙ ШЛЯХ
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      pages: write            
-      id-token: write         
+      pages: write
+      id-token: write
 
     steps:
       - name: Deploy to GitHub Pages
