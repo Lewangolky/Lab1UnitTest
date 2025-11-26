@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.15.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RPG Engine: BattleSimulator Class Reference</title>
+<title>RPG Engine Lab: BattleSimulator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RPG Engine
+   <div id="projectname">RPG Engine Lab
    </div>
   </td>
  </tr>
@@ -62,7 +62,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('class_battle_simulator.html','',''); });
+$(function(){initNavTree('class_battle_simulator.html','','class_battle_simulator-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -92,129 +92,21 @@ $(function(){initNavTree('class_battle_simulator.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p>Симулятор бою між двома групами.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a92d55c3afe73c16a0eb42005738bb35c" id="r_a92d55c3afe73c16a0eb42005738bb35c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92d55c3afe73c16a0eb42005738bb35c">BattleSimulator</a> (<a class="el" href="class_logger.html">Logger</a> &amp;log)</td></tr>
+<tr class="memitem:a92d55c3afe73c16a0eb42005738bb35c" id="r_a92d55c3afe73c16a0eb42005738bb35c"><td class="memItemLeft" align="right" valign="top"><a id="a92d55c3afe73c16a0eb42005738bb35c" name="a92d55c3afe73c16a0eb42005738bb35c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BattleSimulator</b> (<a class="el" href="class_logger.html">Logger</a> &amp;log)</td></tr>
 <tr class="memitem:a51596855f6905169a0cfda1ffad4f11b" id="r_a51596855f6905169a0cfda1ffad4f11b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51596855f6905169a0cfda1ffad4f11b">simulate</a> (<a class="el" href="class_party.html">Party</a> &amp;a, <a class="el" href="class_party.html">Party</a> &amp;b)</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:ab1552fd8a80460b112f88aa97e11d41c" id="r_ab1552fd8a80460b112f88aa97e11d41c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1552fd8a80460b112f88aa97e11d41c">allDead</a> (<a class="el" href="class_party.html">Party</a> &amp;p)</td></tr>
-<tr class="memitem:acacb2ed54e4b459ef97627edaba25970" id="r_acacb2ed54e4b459ef97627edaba25970"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_character.html">Character</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acacb2ed54e4b459ef97627edaba25970">randomAlive</a> (<a class="el" href="class_party.html">Party</a> &amp;p)</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:aabce0584dd2fed0c2103917fd2dca724" id="r_aabce0584dd2fed0c2103917fd2dca724"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_logger.html">Logger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabce0584dd2fed0c2103917fd2dca724">logger</a></td></tr>
+<tr class="memdesc:a51596855f6905169a0cfda1ffad4f11b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Запустити симуляцію бою.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00503">503</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a92d55c3afe73c16a0eb42005738bb35c" name="a92d55c3afe73c16a0eb42005738bb35c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92d55c3afe73c16a0eb42005738bb35c">&#9670;&#160;</a></span>BattleSimulator()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">BattleSimulator::BattleSimulator </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_logger.html">Logger</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>log</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00506">506</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  506</span>: <a class="code hl_variable" href="#aabce0584dd2fed0c2103917fd2dca724">logger</a>(log) {}</div>
-<div class="ttc" id="aclass_battle_simulator_html_aabce0584dd2fed0c2103917fd2dca724"><div class="ttname"><a href="#aabce0584dd2fed0c2103917fd2dca724">BattleSimulator::logger</a></div><div class="ttdeci">Logger &amp; logger</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00504">rpg_engine.h:504</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ab1552fd8a80460b112f88aa97e11d41c" name="ab1552fd8a80460b112f88aa97e11d41c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1552fd8a80460b112f88aa97e11d41c">&#9670;&#160;</a></span>allDead()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool BattleSimulator::allDead </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_party.html">Party</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00530">530</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  530</span>                           {</div>
-<div class="line"><span class="lineno">  531</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0;i &lt; p.<a class="code hl_function" href="class_party.html#a5198970a001e3448fd255d46fa91e8cc">size</a>();++i) {</div>
-<div class="line"><span class="lineno">  532</span>            Character* c = p.<a class="code hl_function" href="class_party.html#acf1b815951d8153013a2f0d05dcfed5e">getMember</a>(i);</div>
-<div class="line"><span class="lineno">  533</span>            <span class="keywordflow">if</span> (c &amp;&amp; c-&gt;<a class="code hl_function" href="class_character.html#a1efad83b621dc115ccfafb4387723137">getHP</a>() &gt; 0) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  534</span>        }</div>
-<div class="line"><span class="lineno">  535</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  536</span>    }</div>
-<div class="ttc" id="aclass_character_html_a1efad83b621dc115ccfafb4387723137"><div class="ttname"><a href="class_character.html#a1efad83b621dc115ccfafb4387723137">Character::getHP</a></div><div class="ttdeci">virtual int getHP() const</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00355">rpg_engine.h:355</a></div></div>
-<div class="ttc" id="aclass_party_html_a5198970a001e3448fd255d46fa91e8cc"><div class="ttname"><a href="class_party.html#a5198970a001e3448fd255d46fa91e8cc">Party::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00489">rpg_engine.h:489</a></div></div>
-<div class="ttc" id="aclass_party_html_acf1b815951d8153013a2f0d05dcfed5e"><div class="ttname"><a href="class_party.html#acf1b815951d8153013a2f0d05dcfed5e">Party::getMember</a></div><div class="ttdeci">Character * getMember(size_t idx)</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00485">rpg_engine.h:485</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="acacb2ed54e4b459ef97627edaba25970" name="acacb2ed54e4b459ef97627edaba25970"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acacb2ed54e4b459ef97627edaba25970">&#9670;&#160;</a></span>randomAlive()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_character.html">Character</a> * BattleSimulator::randomAlive </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_party.html">Party</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00537">537</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  537</span>                                     {</div>
-<div class="line"><span class="lineno">  538</span>        vector&lt;Character*&gt; alive;</div>
-<div class="line"><span class="lineno">  539</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0;i &lt; p.<a class="code hl_function" href="class_party.html#a5198970a001e3448fd255d46fa91e8cc">size</a>();++i) {</div>
-<div class="line"><span class="lineno">  540</span>            Character* c = p.<a class="code hl_function" href="class_party.html#acf1b815951d8153013a2f0d05dcfed5e">getMember</a>(i);</div>
-<div class="line"><span class="lineno">  541</span>            <span class="keywordflow">if</span> (c &amp;&amp; c-&gt;<a class="code hl_function" href="class_character.html#a1efad83b621dc115ccfafb4387723137">getHP</a>() &gt; 0) alive.push_back(c);</div>
-<div class="line"><span class="lineno">  542</span>        }</div>
-<div class="line"><span class="lineno">  543</span>        <span class="keywordflow">if</span> (alive.empty()) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  544</span>        <span class="keywordflow">return</span> alive[rand() % alive.size()];</div>
-<div class="line"><span class="lineno">  545</span>    }</div>
-</div><!-- fragment -->
-</div>
-</div>
+<div class="textblock"><p>Симулятор бою між двома групами. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a51596855f6905169a0cfda1ffad4f11b" name="a51596855f6905169a0cfda1ffad4f11b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a51596855f6905169a0cfda1ffad4f11b">&#9670;&#160;</a></span>simulate()</h2>
 
@@ -242,56 +134,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00507">507</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  507</span>                                      {</div>
-<div class="line"><span class="lineno">  508</span>        <a class="code hl_variable" href="#aabce0584dd2fed0c2103917fd2dca724">logger</a>.log(<span class="stringliteral">&quot;Battle starts between two parties!&quot;</span>);</div>
-<div class="line"><span class="lineno">  509</span>        <span class="keywordtype">size_t</span> turn = 0;</div>
-<div class="line"><span class="lineno">  510</span>        <span class="keywordflow">while</span> (turn &lt; 50) {</div>
-<div class="line"><span class="lineno">  511</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="#ab1552fd8a80460b112f88aa97e11d41c">allDead</a>(a)) { <a class="code hl_variable" href="#aabce0584dd2fed0c2103917fd2dca724">logger</a>.log(<span class="stringliteral">&quot;Party A defeated!&quot;</span>); <span class="keywordflow">return</span>; }</div>
-<div class="line"><span class="lineno">  512</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="#ab1552fd8a80460b112f88aa97e11d41c">allDead</a>(b)) { <a class="code hl_variable" href="#aabce0584dd2fed0c2103917fd2dca724">logger</a>.log(<span class="stringliteral">&quot;Party B defeated!&quot;</span>); <span class="keywordflow">return</span>; }</div>
-<div class="line"><span class="lineno">  513</span> </div>
-<div class="line"><span class="lineno">  514</span>            Character* ca = <a class="code hl_function" href="#acacb2ed54e4b459ef97627edaba25970">randomAlive</a>(a);</div>
-<div class="line"><span class="lineno">  515</span>            Character* cb = <a class="code hl_function" href="#acacb2ed54e4b459ef97627edaba25970">randomAlive</a>(b);</div>
-<div class="line"><span class="lineno">  516</span>            <span class="keywordflow">if</span> (!ca || !cb) <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  517</span> </div>
-<div class="line"><span class="lineno">  518</span>            <span class="keywordflow">if</span> (turn % 2 == 0) {</div>
-<div class="line"><span class="lineno">  519</span>                ca-&gt;<a class="code hl_function" href="class_character.html#a2a186b7dfb3aebfeec9a10b20709c96f">attack</a>(*cb);</div>
-<div class="line"><span class="lineno">  520</span>            }</div>
-<div class="line"><span class="lineno">  521</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  522</span>                cb-&gt;<a class="code hl_function" href="class_character.html#a2a186b7dfb3aebfeec9a10b20709c96f">attack</a>(*ca);</div>
-<div class="line"><span class="lineno">  523</span>            }</div>
-<div class="line"><span class="lineno">  524</span>            turn++;</div>
-<div class="line"><span class="lineno">  525</span>        }</div>
-<div class="line"><span class="lineno">  526</span>        <a class="code hl_variable" href="#aabce0584dd2fed0c2103917fd2dca724">logger</a>.log(<span class="stringliteral">&quot;Battle ended after max turns.&quot;</span>);</div>
-<div class="line"><span class="lineno">  527</span>    }</div>
-<div class="ttc" id="aclass_battle_simulator_html_ab1552fd8a80460b112f88aa97e11d41c"><div class="ttname"><a href="#ab1552fd8a80460b112f88aa97e11d41c">BattleSimulator::allDead</a></div><div class="ttdeci">bool allDead(Party &amp;p)</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00530">rpg_engine.h:530</a></div></div>
-<div class="ttc" id="aclass_battle_simulator_html_acacb2ed54e4b459ef97627edaba25970"><div class="ttname"><a href="#acacb2ed54e4b459ef97627edaba25970">BattleSimulator::randomAlive</a></div><div class="ttdeci">Character * randomAlive(Party &amp;p)</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00537">rpg_engine.h:537</a></div></div>
-<div class="ttc" id="aclass_character_html_a2a186b7dfb3aebfeec9a10b20709c96f"><div class="ttname"><a href="class_character.html#a2a186b7dfb3aebfeec9a10b20709c96f">Character::attack</a></div><div class="ttdeci">virtual int attack(Character &amp;target)</div><div class="ttdoc">Атакує іншого персонажа.</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00315">rpg_engine.h:315</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Field Documentation</h2>
-<a id="aabce0584dd2fed0c2103917fd2dca724" name="aabce0584dd2fed0c2103917fd2dca724"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabce0584dd2fed0c2103917fd2dca724">&#9670;&#160;</a></span>logger</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_logger.html">Logger</a>&amp; BattleSimulator::logger</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00504">504</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
+<p>Запустити симуляцію бою. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Перша група. </td></tr>
+    <tr><td class="paramname">b</td><td>Друга група. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

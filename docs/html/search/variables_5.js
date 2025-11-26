@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['info_5farch_0',['info_arch',['../_c_make_c_x_x_compiler_id_8cpp.html#a59647e99d304ed33b15cb284c27ed391',1,'CMakeCXXCompilerId.cpp']]],
-  ['info_5fcompiler_1',['info_compiler',['../_c_make_c_x_x_compiler_id_8cpp.html#a4b0efeb7a5d59313986b3a0390f050f6',1,'CMakeCXXCompilerId.cpp']]],
-  ['info_5flanguage_5fextensions_5fdefault_2',['info_language_extensions_default',['../_c_make_c_x_x_compiler_id_8cpp.html#a0f46a8a39e09d9b803c4766904fd7e99',1,'CMakeCXXCompilerId.cpp']]],
-  ['info_5flanguage_5fstandard_5fdefault_3',['info_language_standard_default',['../_c_make_c_x_x_compiler_id_8cpp.html#a4607cccf070750927b458473ca82c090',1,'CMakeCXXCompilerId.cpp']]],
-  ['info_5fplatform_4',['info_platform',['../_c_make_c_x_x_compiler_id_8cpp.html#a2321403dee54ee23f0c2fa849c60f7d4',1,'CMakeCXXCompilerId.cpp']]],
-  ['inventory_5',['inventory',['../class_character.html#a4ff40f2915d8241587f9a380336bf4ce',1,'Character']]],
-  ['items_6',['items',['../class_inventory.html#a3b515d60b26c90d9bd52f226fad1a3d4',1,'Inventory']]]
+  ['level_0',['level',['../class_skill.html#a9be0f2e3938c77b30ec694b5ba8619fc',1,'Skill::level'],['../class_character.html#af15a478fe650b87f59cbe5d071697307',1,'Character::level']]],
+  ['logger_1',['logger',['../class_character.html#a739147b20cea2f5c836307033a17c7e5',1,'Character']]]
 ];

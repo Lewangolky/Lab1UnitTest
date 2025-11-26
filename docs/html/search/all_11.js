@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['takedamage_0',['takeDamage',['../class_character.html#ab970cde9a823636f2df81743e6134773',1,'Character']]],
-  ['tostring_1',['toString',['../class_inventory.html#a068f79d4ca6a42285157d6721f6d2600',1,'Inventory']]]
+  ['ultimateskill_0',['UltimateSkill',['../class_ultimate_skill.html',1,'']]],
+  ['upgrade_1',['upgrade',['../class_skill.html#a603c3a7d0f96353578ef35ae39eb3c6f',1,'Skill']]],
+  ['useskill_2',['useSkill',['../class_character.html#ae998b618e10de1572fec1f8a115a0cdc',1,'Character::useSkill()'],['../class_mage.html#a988c7d936f9cf7101ebc74b7fed49a82',1,'Mage::useSkill()']]]
 ];

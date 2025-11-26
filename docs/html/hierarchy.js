@@ -17,5 +17,8 @@ var hierarchy =
       [ "PassiveSkill", "class_passive_skill.html", null ]
     ] ],
     [ "SkillTree&lt; T &gt;", "class_skill_tree.html", null ],
-    [ "SkillTreeNode", "class_skill_tree_node.html", null ]
+    [ "SkillTreeNode", "class_skill_tree_node.html", null ],
+    [ "testing::Test", null, [
+      [ "CharacterInteractionTest", "class_character_interaction_test.html", null ]
+    ] ]
 ];

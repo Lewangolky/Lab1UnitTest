@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['basepower_0',['basePower',['../class_skill.html#abaf3edf5e67e9ff9536cd3e78d27fe98',1,'Skill']]],
-  ['battleshout_1',['battleShout',['../class_warrior.html#ac4f38385de57ce4af288810c990434e3',1,'Warrior']]],
-  ['battlesimulator_2',['BattleSimulator',['../class_battle_simulator.html',1,'BattleSimulator'],['../class_battle_simulator.html#a92d55c3afe73c16a0eb42005738bb35c',1,'BattleSimulator::BattleSimulator()']]]
+  ['character_0',['Character',['../class_character.html',1,'Character'],['../class_character.html#abf37bbfdf59eb5479edd716deb4c0ad7',1,'Character::Character()']]],
+  ['characterinteractiontest_1',['CharacterInteractionTest',['../class_character_interaction_test.html',1,'']]],
+  ['combinedpower_2',['combinedPower',['../class_party.html#ae918f31417c55786f5630ed941e3fbc4',1,'Party']]]
 ];

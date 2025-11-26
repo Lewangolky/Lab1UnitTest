@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.15.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RPG Engine: Skill Class Reference</title>
+<title>RPG Engine Lab: Skill Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RPG Engine
+   <div id="projectname">RPG Engine Lab
    </div>
   </td>
  </tr>
@@ -62,7 +62,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('class_skill.html','',''); });
+$(function(){initNavTree('class_skill.html','','class_skill-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -92,7 +92,7 @@ $(function(){initNavTree('class_skill.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Базовий клас навички персонажа.  
+<p>Абстрактний базовий клас навички.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>&gt;</code></p>
@@ -102,37 +102,44 @@ Inheritance diagram for Skill:</div>
  <div class="center">
   <img src="class_skill.png" usemap="#Skill_map" alt=""/>
   <map id="Skill_map" name="Skill_map">
-<area href="class_active_skill.html" alt="ActiveSkill" shape="rect" coords="0,56,79,80"/>
-<area href="class_passive_skill.html" alt="PassiveSkill" shape="rect" coords="89,56,168,80"/>
-<area href="class_ultimate_skill.html" alt="UltimateSkill" shape="rect" coords="0,112,79,136"/>
+<area href="class_active_skill.html" title="Активна навичка, що потребує мани." alt="ActiveSkill" shape="rect" coords="0,56,79,80"/>
+<area href="class_passive_skill.html" title="Пасивна навичка, що дає модифікатори." alt="PassiveSkill" shape="rect" coords="89,56,168,80"/>
+<area href="class_ultimate_skill.html" title="Потужна навичка з кулдауном (перезарядкою)." alt="UltimateSkill" shape="rect" coords="0,112,79,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a069b0de60922696ba7a4fb78c43def40" id="r_a069b0de60922696ba7a4fb78c43def40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a069b0de60922696ba7a4fb78c43def40">Skill</a> (const string &amp;n, int p=10)</td></tr>
-<tr class="memitem:acd8b38c862c22e1b639d27810c2f12df" id="r_acd8b38c862c22e1b639d27810c2f12df"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd8b38c862c22e1b639d27810c2f12df">~Skill</a> ()=default</td></tr>
+<tr class="memdesc:a069b0de60922696ba7a4fb78c43def40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор навички.  <br /></td></tr>
 <tr class="memitem:af95618c6b112e1ea09688de4091268b8" id="r_af95618c6b112e1ea09688de4091268b8"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af95618c6b112e1ea09688de4091268b8">effectivePower</a> () const</td></tr>
-<tr class="memdesc:af95618c6b112e1ea09688de4091268b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Повертає ефективну силу навички.  <br /></td></tr>
+<tr class="memdesc:af95618c6b112e1ea09688de4091268b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Розрахунок ефективної сили.  <br /></td></tr>
 <tr class="memitem:a2a63e4585378ab1503c38da54428c07d" id="r_a2a63e4585378ab1503c38da54428c07d"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a63e4585378ab1503c38da54428c07d">description</a> () const</td></tr>
-<tr class="memdesc:a2a63e4585378ab1503c38da54428c07d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Повертає текстове описання навички.  <br /></td></tr>
+<tr class="memdesc:a2a63e4585378ab1503c38da54428c07d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Опис навички.  <br /></td></tr>
 <tr class="memitem:a3d053f3e6a5798a751c38d901d8b83b5" id="r_a3d053f3e6a5798a751c38d901d8b83b5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d053f3e6a5798a751c38d901d8b83b5">apply</a> (<a class="el" href="class_character.html">Character</a> &amp;target)=0</td></tr>
-<tr class="memdesc:a3d053f3e6a5798a751c38d901d8b83b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Застосовує навичку до персонажа.  <br /></td></tr>
-<tr class="memitem:a603c3a7d0f96353578ef35ae39eb3c6f" id="r_a603c3a7d0f96353578ef35ae39eb3c6f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a603c3a7d0f96353578ef35ae39eb3c6f">upgrade</a> ()</td></tr>
-<tr class="memitem:a88115868946da827cec2752b6af320a1" id="r_a88115868946da827cec2752b6af320a1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88115868946da827cec2752b6af320a1">getName</a> () const</td></tr>
-<tr class="memitem:acd4328278be378d669e3fd7476e0ba9b" id="r_acd4328278be378d669e3fd7476e0ba9b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd4328278be378d669e3fd7476e0ba9b">getLevel</a> () const</td></tr>
+<tr class="memdesc:a3d053f3e6a5798a751c38d901d8b83b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Застосувати навичку до цілі.  <br /></td></tr>
+<tr class="memitem:a603c3a7d0f96353578ef35ae39eb3c6f" id="r_a603c3a7d0f96353578ef35ae39eb3c6f"><td class="memItemLeft" align="right" valign="top"><a id="a603c3a7d0f96353578ef35ae39eb3c6f" name="a603c3a7d0f96353578ef35ae39eb3c6f"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>upgrade</b> ()</td></tr>
+<tr class="memdesc:a603c3a7d0f96353578ef35ae39eb3c6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Покращити навичку. Підвищує рівень та базову силу. <br /></td></tr>
+<tr class="memitem:a88115868946da827cec2752b6af320a1" id="r_a88115868946da827cec2752b6af320a1"><td class="memItemLeft" align="right" valign="top"><a id="a88115868946da827cec2752b6af320a1" name="a88115868946da827cec2752b6af320a1"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> () const</td></tr>
+<tr class="memitem:acd4328278be378d669e3fd7476e0ba9b" id="r_acd4328278be378d669e3fd7476e0ba9b"><td class="memItemLeft" align="right" valign="top"><a id="acd4328278be378d669e3fd7476e0ba9b" name="acd4328278be378d669e3fd7476e0ba9b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getLevel</b> () const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a217e3d25f9d7ffc1fa5335661b732bcf" id="r_a217e3d25f9d7ffc1fa5335661b732bcf"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a217e3d25f9d7ffc1fa5335661b732bcf">name</a></td></tr>
-<tr class="memitem:a9be0f2e3938c77b30ec694b5ba8619fc" id="r_a9be0f2e3938c77b30ec694b5ba8619fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9be0f2e3938c77b30ec694b5ba8619fc">level</a></td></tr>
-<tr class="memitem:abaf3edf5e67e9ff9536cd3e78d27fe98" id="r_abaf3edf5e67e9ff9536cd3e78d27fe98"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaf3edf5e67e9ff9536cd3e78d27fe98">basePower</a></td></tr>
+<tr class="memitem:a217e3d25f9d7ffc1fa5335661b732bcf" id="r_a217e3d25f9d7ffc1fa5335661b732bcf"><td class="memItemLeft" align="right" valign="top"><a id="a217e3d25f9d7ffc1fa5335661b732bcf" name="a217e3d25f9d7ffc1fa5335661b732bcf"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="memdesc:a217e3d25f9d7ffc1fa5335661b732bcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Назва навички <br /></td></tr>
+<tr class="memitem:a9be0f2e3938c77b30ec694b5ba8619fc" id="r_a9be0f2e3938c77b30ec694b5ba8619fc"><td class="memItemLeft" align="right" valign="top"><a id="a9be0f2e3938c77b30ec694b5ba8619fc" name="a9be0f2e3938c77b30ec694b5ba8619fc"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>level</b></td></tr>
+<tr class="memdesc:a9be0f2e3938c77b30ec694b5ba8619fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Рівень навички <br /></td></tr>
+<tr class="memitem:abaf3edf5e67e9ff9536cd3e78d27fe98" id="r_abaf3edf5e67e9ff9536cd3e78d27fe98"><td class="memItemLeft" align="right" valign="top"><a id="abaf3edf5e67e9ff9536cd3e78d27fe98" name="abaf3edf5e67e9ff9536cd3e78d27fe98"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>basePower</b></td></tr>
+<tr class="memdesc:abaf3edf5e67e9ff9536cd3e78d27fe98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Базова сила <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Базовий клас навички персонажа. </p>
-<p>Містить назву, рівень та базову силу навички. Від нього успадковуються активні, пасивні та ультимативні навички. </p>
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00105">105</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
+<div class="textblock"><p>Абстрактний базовий клас навички. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a069b0de60922696ba7a4fb78c43def40" name="a069b0de60922696ba7a4fb78c43def40"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a069b0de60922696ba7a4fb78c43def40">&#9670;&#160;</a></span>Skill()</h2>
@@ -161,36 +168,14 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00111">111</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  111</span>: <a class="code hl_variable" href="#a217e3d25f9d7ffc1fa5335661b732bcf">name</a>(n), <a class="code hl_variable" href="#a9be0f2e3938c77b30ec694b5ba8619fc">level</a>(1), <a class="code hl_variable" href="#abaf3edf5e67e9ff9536cd3e78d27fe98">basePower</a>(p) {}</div>
-<div class="ttc" id="aclass_skill_html_a217e3d25f9d7ffc1fa5335661b732bcf"><div class="ttname"><a href="#a217e3d25f9d7ffc1fa5335661b732bcf">Skill::name</a></div><div class="ttdeci">string name</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00107">rpg_engine.h:107</a></div></div>
-<div class="ttc" id="aclass_skill_html_a9be0f2e3938c77b30ec694b5ba8619fc"><div class="ttname"><a href="#a9be0f2e3938c77b30ec694b5ba8619fc">Skill::level</a></div><div class="ttdeci">int level</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00108">rpg_engine.h:108</a></div></div>
-<div class="ttc" id="aclass_skill_html_abaf3edf5e67e9ff9536cd3e78d27fe98"><div class="ttname"><a href="#abaf3edf5e67e9ff9536cd3e78d27fe98">Skill::basePower</a></div><div class="ttdeci">int basePower</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00109">rpg_engine.h:109</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="acd8b38c862c22e1b639d27810c2f12df" name="acd8b38c862c22e1b639d27810c2f12df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd8b38c862c22e1b639d27810c2f12df">&#9670;&#160;</a></span>~Skill()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual Skill::~Skill </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span><span class="mlabel default">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Конструктор навички. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Назва. </td></tr>
+    <tr><td class="paramname">p</td><td>Базова сила. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -218,16 +203,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Застосовує навичку до персонажа. </p>
+<p>Застосувати навичку до цілі. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">target</td><td>персонаж, до якого застосовується навичка </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">нічого</td><td></td></tr>
+    <tr><td class="paramname">target</td><td>Персонаж-ціль. </td></tr>
   </table>
   </dd>
 </dl>
@@ -259,17 +238,11 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Повертає текстове описання навички. </p>
-<dl class="section return"><dt>Returns</dt><dd>рядок з описом </dd></dl>
+<p>Опис навички. </p>
+<dl class="section return"><dt>Returns</dt><dd>Рядок з деталями. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_active_skill.html#a5c61209be4e29a72e18cc011f9b88531">ActiveSkill</a>, <a class="el" href="class_passive_skill.html#ad476ef35b70b8e41548600af758c887c">PassiveSkill</a>, and <a class="el" href="class_ultimate_skill.html#a004ecd3e10bd9a132fb5b04470e21856">UltimateSkill</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00124">124</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  124</span>                                       {</div>
-<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#a217e3d25f9d7ffc1fa5335661b732bcf">name</a> + <span class="stringliteral">&quot; (lvl &quot;</span> + to_string(<a class="code hl_variable" href="#a9be0f2e3938c77b30ec694b5ba8619fc">level</a>) + <span class="stringliteral">&quot;, pwr &quot;</span> + to_string(<a class="code hl_function" href="#af95618c6b112e1ea09688de4091268b8">effectivePower</a>()) + <span class="stringliteral">&quot;)&quot;</span>;</div>
-<div class="line"><span class="lineno">  126</span>    }</div>
-<div class="ttc" id="aclass_skill_html_af95618c6b112e1ea09688de4091268b8"><div class="ttname"><a href="#af95618c6b112e1ea09688de4091268b8">Skill::effectivePower</a></div><div class="ttdeci">virtual int effectivePower() const</div><div class="ttdoc">Повертає ефективну силу навички.</div><div class="ttdef"><b>Definition</b> <a href="rpg__engine_8h_source.html#l00117">rpg_engine.h:117</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="af95618c6b112e1ea09688de4091268b8" name="af95618c6b112e1ea09688de4091268b8"></a>
@@ -295,175 +268,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Повертає ефективну силу навички. </p>
-<dl class="section return"><dt>Returns</dt><dd>сила з урахуванням рівня </dd></dl>
+<p>Розрахунок ефективної сили. </p>
+<dl class="section return"><dt>Returns</dt><dd>Сила з урахуванням рівня. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_active_skill.html#a7ea26c191fd62ba45a333b13fe224861">ActiveSkill</a>, <a class="el" href="class_passive_skill.html#ac68fd1abdd30e44c837451a81464a5c4">PassiveSkill</a>, and <a class="el" href="class_ultimate_skill.html#a4354cff6b0044e8404e3bfa10b1bd7e4">UltimateSkill</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00117">117</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  117</span>                                       {</div>
-<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#abaf3edf5e67e9ff9536cd3e78d27fe98">basePower</a> + <a class="code hl_variable" href="#a9be0f2e3938c77b30ec694b5ba8619fc">level</a> * 3;</div>
-<div class="line"><span class="lineno">  119</span>    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="acd4328278be378d669e3fd7476e0ba9b" name="acd4328278be378d669e3fd7476e0ba9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd4328278be378d669e3fd7476e0ba9b">&#9670;&#160;</a></span>getLevel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Skill::getLevel </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00138">138</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  138</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a9be0f2e3938c77b30ec694b5ba8619fc">level</a>; } </div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a88115868946da827cec2752b6af320a1" name="a88115868946da827cec2752b6af320a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88115868946da827cec2752b6af320a1">&#9670;&#160;</a></span>getName()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Skill::getName </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00137">137</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  137</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a217e3d25f9d7ffc1fa5335661b732bcf">name</a>; }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a603c3a7d0f96353578ef35ae39eb3c6f" name="a603c3a7d0f96353578ef35ae39eb3c6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a603c3a7d0f96353578ef35ae39eb3c6f">&#9670;&#160;</a></span>upgrade()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void Skill::upgrade </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00133">133</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  133</span>                           {</div>
-<div class="line"><span class="lineno">  134</span>        <a class="code hl_variable" href="#a9be0f2e3938c77b30ec694b5ba8619fc">level</a>++;</div>
-<div class="line"><span class="lineno">  135</span>        <a class="code hl_variable" href="#abaf3edf5e67e9ff9536cd3e78d27fe98">basePower</a> = <a class="code hl_variable" href="#abaf3edf5e67e9ff9536cd3e78d27fe98">basePower</a> + 2;</div>
-<div class="line"><span class="lineno">  136</span>    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Field Documentation</h2>
-<a id="abaf3edf5e67e9ff9536cd3e78d27fe98" name="abaf3edf5e67e9ff9536cd3e78d27fe98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abaf3edf5e67e9ff9536cd3e78d27fe98">&#9670;&#160;</a></span>basePower</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Skill::basePower</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00109">109</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-
-</div>
-</div>
-<a id="a9be0f2e3938c77b30ec694b5ba8619fc" name="a9be0f2e3938c77b30ec694b5ba8619fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9be0f2e3938c77b30ec694b5ba8619fc">&#9670;&#160;</a></span>level</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Skill::level</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00108">108</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
-
-</div>
-</div>
-<a id="a217e3d25f9d7ffc1fa5335661b732bcf" name="a217e3d25f9d7ffc1fa5335661b732bcf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a217e3d25f9d7ffc1fa5335661b732bcf">&#9670;&#160;</a></span>name</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Skill::name</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="rpg__engine_8h_source.html#l00107">107</a> of file <a class="el" href="rpg__engine_8h_source.html">rpg_engine.h</a>.</p>
 
 </div>
 </div>

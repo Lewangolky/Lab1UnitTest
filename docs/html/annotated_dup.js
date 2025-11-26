@@ -4,6 +4,7 @@ var annotated_dup =
     [ "Archer", "class_archer.html", "class_archer" ],
     [ "BattleSimulator", "class_battle_simulator.html", "class_battle_simulator" ],
     [ "Character", "class_character.html", "class_character" ],
+    [ "CharacterInteractionTest", "class_character_interaction_test.html", null ],
     [ "Inventory", "class_inventory.html", "class_inventory" ],
     [ "Item", "class_item.html", "class_item" ],
     [ "Logger", "class_logger.html", "class_logger" ],
