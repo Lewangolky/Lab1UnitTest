@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['збірка_0',['Збірка',['../index.html#build_sec',1,'']]]
+  ['generaterandom_0',['generateRandom',['../classSkillTree.html#a39a349c8fe0acc4e8bbaccb44ea74997',1,'SkillTree']]]
 ];

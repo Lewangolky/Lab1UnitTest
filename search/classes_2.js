@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['character_0',['Character',['../class_character.html',1,'']]]
+  ['character_0',['Character',['../classCharacter.html',1,'']]],
+  ['characterinteractiontest_1',['CharacterInteractionTest',['../classCharacterInteractionTest.html',1,'']]]
 ];

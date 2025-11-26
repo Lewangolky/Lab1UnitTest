@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mage_0',['Mage',['../class_mage.html#a5846e699f8a27eb60f39e990803d13b2',1,'Mage']]],
-  ['main_1',['main',['../_c_make_c_x_x_compiler_id_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCXXCompilerId.cpp'],['../lab1_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;lab1.cpp']]]
+  ['randomskillfactory_0',['randomSkillFactory',['../rpg__engine_8h.html#aad3e16f620991e33d75445a03ad7e743',1,'rpg_engine.h']]],
+  ['removeifname_1',['removeIfName',['../classInventory.html#ad6b24df4b213fcbd0f0c9412ff0e5a15',1,'Inventory']]]
 ];

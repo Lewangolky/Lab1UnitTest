@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['автор_0',['Автор',['../index.html#author_sec',1,'']]]
+  ['effectivepower_0',['effectivePower',['../classSkill.html#af95618c6b112e1ea09688de4091268b8',1,'Skill::effectivePower()'],['../classActiveSkill.html#a7ea26c191fd62ba45a333b13fe224861',1,'ActiveSkill::effectivePower()'],['../classPassiveSkill.html#ac68fd1abdd30e44c837451a81464a5c4',1,'PassiveSkill::effectivePower()'],['../classUltimateSkill.html#a4354cff6b0044e8404e3bfa10b1bd7e4',1,'UltimateSkill::effectivePower()']]],
+  ['equipskill_1',['equipSkill',['../classCharacter.html#a739805dbd80d2701cbe0ba9e2ab3d5aa',1,'Character']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['battlesimulator_0',['BattleSimulator',['../class_battle_simulator.html',1,'']]]
+  ['battlesimulator_0',['BattleSimulator',['../classBattleSimulator.html',1,'']]]
 ];

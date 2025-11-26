@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['randomalive_0',['randomAlive',['../class_battle_simulator.html#acacb2ed54e4b459ef97627edaba25970',1,'BattleSimulator']]],
-  ['randomskillfactory_1',['randomSkillFactory',['../rpg__engine_8h.html#aad3e16f620991e33d75445a03ad7e743',1,'rpg_engine.h']]],
-  ['removechildwithskillname_2',['removeChildWithSkillName',['../class_skill_tree_node.html#a23ab889810393ec3d48ef383b1556cdb',1,'SkillTreeNode']]],
-  ['removeifname_3',['removeIfName',['../class_inventory.html#ad6b24df4b213fcbd0f0c9412ff0e5a15',1,'Inventory']]]
+  ['upgrade_0',['upgrade',['../classSkill.html#a603c3a7d0f96353578ef35ae39eb3c6f',1,'Skill']]],
+  ['useskill_1',['useSkill',['../classCharacter.html#ae998b618e10de1572fec1f8a115a0cdc',1,'Character::useSkill()'],['../classMage.html#a988c7d936f9cf7101ebc74b7fed49a82',1,'Mage::useSkill()']]]
 ];

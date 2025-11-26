@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ultimateskill_0',['UltimateSkill',['../class_ultimate_skill.html',1,'']]]
+  ['ultimateskill_0',['UltimateSkill',['../classUltimateSkill.html',1,'']]]
 ];
