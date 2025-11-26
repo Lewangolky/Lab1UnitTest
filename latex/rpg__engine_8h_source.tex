@@ -1,0 +1,541 @@
+\doxysection{rpg\+\_\+engine.\+h}
+\hypertarget{rpg__engine_8h_source}{}\label{rpg__engine_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DANILKA\_RPG\_ENGINE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DANILKA\_RPG\_ENGINE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ 1\ \ \ +}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ :\ Skill\ Trees\ +\ Characters}}
+\DoxyCodeLine{00022\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Logger\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }Logger\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{enum}\ Level\ \{\ INFO,\ WARN,\ ERROR\ \};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ Level\ level;}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ Logger(Level\ l\ =\ INFO)\ :\ level(l)\ \{\}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ log(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ msg,\ Level\ l\ =\ INFO)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ >=\ level)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ У\ тестах\ вивід\ може\ бути\ небажаним,\ тому\ можна\ його\ вимкнути}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cout\ <<\ "{}["{}\ <<\ levelName(l)\ <<\ "{}]\ "{}\ <<\ msg\ <<\ "{}\(\backslash\)n"{};}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ levelName(Level\ l)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (l)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INFO:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}INFO"{}};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ WARN:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}WARN"{}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ERROR"{}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Item\ (helper)\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00048\ \textcolor{keyword}{class\ }Item\ \{}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ ...\ (весь\ код\ Item)\ ...}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ value;}
+\DoxyCodeLine{00052\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ Item(\textcolor{keywordtype}{string}\ n\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{int}\ v\ =\ 0)\ :\ name(n),\ value(v)\ \{\}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{string}\ getName()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ name;\ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ getValue()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ value;\ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{string}\ str()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ name\ +\ \textcolor{stringliteral}{"{}(\$"{}}\ +\ to\_string(value)\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Inventory\ (template)\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00062\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00063\ \textcolor{keyword}{class\ }Inventory\ \{}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ ...\ (весь\ код\ Inventory)\ ...}}
+\DoxyCodeLine{00065\ \ \ \ \ vector<T>\ items;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ capacity;}
+\DoxyCodeLine{00067\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ Inventory(\textcolor{keywordtype}{size\_t}\ cap\ =\ 10)\ :\ capacity(cap)\ \{\}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ add(\textcolor{keyword}{const}\ T\&\ it)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (items.size()\ >=\ capacity)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ items.push\_back(it);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ removeIfName(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n)\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ remove\_if(items.begin(),\ items.end(),\ [\&](\textcolor{keyword}{const}\ T\&\ it)\ \{\ return\ it.getName()\ ==\ n;\ \});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ items.end())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ items.erase(it,\ items.end());}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ T*\ findByName(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n)\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ it\ :\ items)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it.getName()\ ==\ n)\ \textcolor{keywordflow}{return}\ \&it;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ vector<T>\ snapshot()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ items;\ \}\ \textcolor{comment}{//\ copy}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{string}\ toString()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ s\ =\ \textcolor{stringliteral}{"{}Inventory("{}}\ +\ to\_string(items.size())\ +\ \textcolor{stringliteral}{"{}/"{}}\ +\ to\_string(capacity)\ +\ \textcolor{stringliteral}{"{}):\ "{}};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ it\ :\ items)\ s\ +=\ it.str()\ +\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ getSize()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ items.size();\ \}\ \textcolor{comment}{//\ Додано\ для\ тестів}}
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Forward\ declarations\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00095\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character}{Character}};}
+\DoxyCodeLine{00096\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_skill}{Skill}};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Skill\ hierarchy\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00099\ \textcolor{keyword}{class\ }Skill\ \{}
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ ...\ (весь\ код\ Skill)\ ...}}
+\DoxyCodeLine{00101\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{int}\ level;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ level\ of\ skill}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{int}\ basePower;}
+\DoxyCodeLine{00105\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00106\ \ \ \ \ Skill(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n,\ \textcolor{keywordtype}{int}\ p\ =\ 10)\ :\ name(n),\ level(1),\ basePower(p)\ \{\}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~Skill()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ effectivePower()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ basePower\ +\ level\ *\ 3;}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ description()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ name\ +\ \textcolor{stringliteral}{"{}\ (lvl\ "{}}\ +\ to\_string(level)\ +\ \textcolor{stringliteral}{"{},\ pwr\ "{}}\ +\ to\_string(effectivePower())\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00113\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ apply(\mbox{\hyperlink{class_character}{Character}}\&\ target)\ =\ 0;\ \textcolor{comment}{//\ abstract\ action\ on\ target}}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ upgrade()\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ level++;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ basePower\ =\ basePower\ +\ 2;}
+\DoxyCodeLine{00118\ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{string}\ getName()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ name;\ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{int}\ getLevel()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ level;\ \}\ \textcolor{comment}{//\ Додано\ для\ тестів}}
+\DoxyCodeLine{00121\ \};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{keyword}{class\ }ActiveSkill\ :\ \textcolor{keyword}{public}\ Skill\ \{}
+\DoxyCodeLine{00124\ \textcolor{comment}{//\ ...\ (весь\ код\ ActiveSkill)\ ...}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{int}\ manaCost;}
+\DoxyCodeLine{00126\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00127\ \ \ \ \ ActiveSkill(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n,\ \textcolor{keywordtype}{int}\ p\ =\ 12,\ \textcolor{keywordtype}{int}\ cost\ =\ 10)\ :\ Skill(n,\ p),\ manaCost(cost)\ \{\}}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{int}\ effectivePower()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ basePower\ +\ level\ *\ 5;}
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{string}\ description()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Active:\ "{}}\ +\ Skill::description()\ +\ \textcolor{stringliteral}{"{}\ mana:"{}}\ +\ to\_string(manaCost);}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{void}\ apply(\mbox{\hyperlink{class_character}{Character}}\&\ target)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{int}\ getManaCost()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ manaCost;\ \}\ \textcolor{comment}{//\ Додано\ для\ тестів}}
+\DoxyCodeLine{00136\ \};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \textcolor{keyword}{class\ }PassiveSkill\ :\ \textcolor{keyword}{public}\ Skill\ \{}
+\DoxyCodeLine{00139\ \textcolor{comment}{//\ ...\ (весь\ код\ PassiveSkill)\ ...}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{double}\ modifier;\ \textcolor{comment}{//\ e.g.,\ increases\ defense\ or\ attack\ by\ percentage}}
+\DoxyCodeLine{00141\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00142\ \ \ \ \ PassiveSkill(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n,\ \textcolor{keywordtype}{int}\ p\ =\ 5,\ \textcolor{keywordtype}{double}\ mod\ =\ 0.05)\ :\ Skill(n,\ p),\ modifier(mod)\ \{\}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{int}\ effectivePower()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ basePower\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(level\ *\ (modifier\ *\ 100));}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{string}\ description()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Passive:\ "{}}\ +\ Skill::description()\ +\ \textcolor{stringliteral}{"{}\ mod:\ "{}}\ +\ to\_string(modifier);}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ apply(\mbox{\hyperlink{class_character}{Character}}\&\ target)\ \textcolor{keyword}{override};\ \textcolor{comment}{//\ will\ modify\ stats\ passively}}
+\DoxyCodeLine{00150\ \};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{keyword}{class\ }UltimateSkill\ :\ \textcolor{keyword}{public}\ ActiveSkill\ \{}
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ ...\ (весь\ код\ UltimateSkill)\ ...}}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{int}\ cooldown;}
+\DoxyCodeLine{00155\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00156\ \ \ \ \ UltimateSkill(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n,\ \textcolor{keywordtype}{int}\ p\ =\ 30,\ \textcolor{keywordtype}{int}\ cost\ =\ 30,\ \textcolor{keywordtype}{int}\ cd\ =\ 3)\ :\ ActiveSkill(n,\ p,\ cost),\ cooldown(cd)\ \{\}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{int}\ effectivePower()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ basePower\ +\ level\ *\ 12;}
+\DoxyCodeLine{00159\ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{string}\ description()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Ultimate:\ "{}}\ +\ Skill::description()\ +\ \textcolor{stringliteral}{"{}\ cd:"{}}\ +\ to\_string(cooldown);}
+\DoxyCodeLine{00162\ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{void}\ apply(\mbox{\hyperlink{class_character}{Character}}\&\ target)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00164\ \};}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ SkillTree\ node\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00167\ \textcolor{keyword}{class\ }SkillTreeNode\ \{}
+\DoxyCodeLine{00168\ \textcolor{comment}{//\ ...\ (весь\ код\ SkillTreeNode)\ ...}}
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{class_skill}{Skill}}*\ skill;}
+\DoxyCodeLine{00170\ \ \ \ \ SkillTreeNode*\ parent;}
+\DoxyCodeLine{00171\ \ \ \ \ vector<unique\_ptr<SkillTreeNode>>\ children;}
+\DoxyCodeLine{00172\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00173\ \ \ \ \ SkillTreeNode(\mbox{\hyperlink{class_skill}{Skill}}*\ s\ =\ \textcolor{keyword}{nullptr},\ SkillTreeNode*\ p\ =\ \textcolor{keyword}{nullptr})\ :\ skill(s),\ parent(p)\ \{\}}
+\DoxyCodeLine{00174\ \ \ \ \ \string~SkillTreeNode()\ \{\ \textcolor{comment}{/*\ skill\ ownership\ is\ external\ (managed\ elsewhere)\ */}\ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{class_skill}{Skill}}*\ getSkill()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ skill;\ \}}
+\DoxyCodeLine{00177\ \ \ \ \ SkillTreeNode*\ getParent()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ parent;\ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ SkillTreeNode*\ addChild(\mbox{\hyperlink{class_skill}{Skill}}*\ s)\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ children.push\_back(make\_unique<SkillTreeNode>(s,\ \textcolor{keyword}{this}));}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ children.back().get();}
+\DoxyCodeLine{00182\ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \textcolor{comment}{//\ ...\ (решта\ коду\ SkillTreeNode)\ ...}}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{bool}\ removeChildWithSkillName(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n)\ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ remove\_if(children.begin(),\ children.end(),}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ [\&](\textcolor{keyword}{const}\ unique\_ptr<SkillTreeNode>\&\ c)\ \{\ return\ c-\/>skill\ \&\&\ c-\/>skill-\/>getName()\ ==\ n;\ \});}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ children.end())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ children.erase(it,\ children.end());}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordtype}{void}\ dfs(F\ f)\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ f(\textcolor{keyword}{this});}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ ch\ :\ children)\ ch-\/>dfs(f);}
+\DoxyCodeLine{00196\ \ \ \ \ \}}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ vector<SkillTreeNode*>\ getChildrenRaw()\ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ vector<SkillTreeNode*>\ out;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ c\ :\ children)\ out.push\_back(c.get());}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{00202\ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \};}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ SkillTree\ template\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00206\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00207\ \textcolor{keyword}{class\ }SkillTree\ \{}
+\DoxyCodeLine{00208\ \textcolor{comment}{//\ ...\ (весь\ код\ SkillTree)\ ...}}
+\DoxyCodeLine{00209\ \ \ \ \ unique\_ptr<SkillTreeNode>\ root;}
+\DoxyCodeLine{00210\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00211\ \ \ \ \ SkillTree()\ :\ root(\textcolor{keyword}{nullptr})\ \{\}}
+\DoxyCodeLine{00212\ \ \ \ \ SkillTree(\mbox{\hyperlink{class_skill}{Skill}}*\ s)\ \{\ root\ =\ make\_unique<SkillTreeNode>(s,\ \textcolor{keyword}{nullptr});\ \}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \mbox{\hyperlink{class_skill_tree_node}{SkillTreeNode}}*\ getRoot()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ root.get();\ \}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{class_skill_tree_node}{SkillTreeNode}}*\ insertUnder(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ parentSkillName,\ \mbox{\hyperlink{class_skill}{Skill}}*\ s)\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!root)\ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ root\ =\ make\_unique<SkillTreeNode>(s,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ root.get();}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_skill_tree_node}{SkillTreeNode}}*\ found\ =\ findNodeBySkillName(parentSkillName);}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!found)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ found-\/>addChild(s);}
+\DoxyCodeLine{00224\ \ \ \ \ \}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \mbox{\hyperlink{class_skill_tree_node}{SkillTreeNode}}*\ findNodeBySkillName(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!root)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_skill_tree_node}{SkillTreeNode}}*\ result\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ root-\/>dfs([\&](\mbox{\hyperlink{class_skill_tree_node}{SkillTreeNode}}*\ node)\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>getSkill()\ \&\&\ node-\/>getSkill()-\/>getName()\ ==\ name)\ result\ =\ node;}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00233\ \ \ \ \ \}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ vector<string>\ descriptionsDFS()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ vector<string>\ out;}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!root)\ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ root-\/>dfs([\&](\mbox{\hyperlink{class_skill_tree_node}{SkillTreeNode}}*\ node)\ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>getSkill())\ out.push\_back(node-\/>getSkill()-\/>description());}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \textcolor{comment}{//\ ...\ (решта\ коду\ SkillTree)\ ...}}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{void}\ generateRandom(\mbox{\hyperlink{class_skill}{Skill}}*\ (*skillFactory)(),\ \textcolor{keywordtype}{int}\ maxDepth\ =\ 3,\ \textcolor{keywordtype}{int}\ maxChildren\ =\ 3)\ \{}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ root\ =\ make\_unique<SkillTreeNode>(skillFactory(),\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ default\_random\_engine\ rng((\textcolor{keywordtype}{unsigned})chrono::high\_resolution\_clock::now().time\_since\_epoch().count());}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ queue<pair<SkillTreeNode*,\ int>>\ q;}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ q.push(\{\ root.get(),\ 1\ \});}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!q.empty())\ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ [node,\ depth]\ =\ q.front();\ q.pop();}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (depth\ >=\ maxDepth)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ uniform\_int\_distribution<int>\ distChildren(0,\ maxChildren);}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nc\ =\ distChildren(rng);}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;i\ <\ nc;i++)\ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_skill}{Skill}}*\ s\ =\ skillFactory();}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_skill_tree_node}{SkillTreeNode}}*\ child\ =\ node-\/>addChild(s);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.push(\{\ child,\ depth\ +\ 1\ \});}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00260\ \ \ \ \ \}}
+\DoxyCodeLine{00261\ \};}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Character\ hierarchy\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00264\ \textcolor{keyword}{class\ }Character\ \{}
+\DoxyCodeLine{00265\ \textcolor{comment}{//\ ...\ (весь\ код\ Character)\ ...}}
+\DoxyCodeLine{00266\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keywordtype}{int}\ hp;}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordtype}{int}\ mana;}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keywordtype}{int}\ attackPower;}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordtype}{int}\ defense;}
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keywordtype}{int}\ level;}
+\DoxyCodeLine{00273\ \ \ \ \ vector<unique\_ptr<Skill>>\ ownedSkills;\ \textcolor{comment}{//\ owns\ some\ skills}}
+\DoxyCodeLine{00274\ \ \ \ \ \mbox{\hyperlink{class_inventory}{Inventory<Item>}}\ inventory;\ \textcolor{comment}{//\ composition\ of\ template\ Inventory}}
+\DoxyCodeLine{00275\ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}\&\ logger;}
+\DoxyCodeLine{00276\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00277\ \ \ \ \ Character(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n,\ \mbox{\hyperlink{class_logger}{Logger}}\&\ log)}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ :\ name(n),\ hp(100),\ mana(50),\ attackPower(10),\ defense(5),\ level(1),\ inventory(10),\ logger(log)\ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \}}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~Character()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ attack(Character\&\ target)\ \{}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ raw\ =\ attackPower\ +\ level\ *\ 2;}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ variance\ =\ rand()\ \%\ (level\ +\ 3);}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\ =\ max(0,\ raw\ +\ variance\ -\/\ target.getDefense());}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ target.takeDamage(dmg);}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ attacks\ "{}}\ +\ target.getName()\ +\ \textcolor{stringliteral}{"{}\ for\ "{}}\ +\ to\_string(dmg)\ +\ \textcolor{stringliteral}{"{}\ dmg."{}});}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dmg;}
+\DoxyCodeLine{00290\ \ \ \ \ \}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ useSkill(\textcolor{keywordtype}{size\_t}\ idx,\ Character\&\ target)\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (idx\ >=\ ownedSkills.size())\ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ tried\ to\ use\ invalid\ skill\ index."{}},\ Logger::WARN);}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_skill}{Skill}}*\ sk\ =\ ownedSkills[idx].get();}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sk)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ uses\ "{}}\ +\ sk-\/>getName()\ +\ \textcolor{stringliteral}{"{}\ on\ "{}}\ +\ target.getName());}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ sk-\/>apply(target);\ \textcolor{comment}{//\ dynamic\ dispatch}}
+\DoxyCodeLine{00301\ \ \ \ \ \}}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ equipSkill(unique\_ptr<Skill>\ s)\ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!s)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ equips\ skill\ "{}}\ +\ s-\/>getName());}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ ownedSkills.push\_back(move(s));}
+\DoxyCodeLine{00307\ \ \ \ \ \}}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ levelUp()\ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ level++;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ hp\ +=\ 10;}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ mana\ +=\ 5;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ attackPower\ +=\ 2;}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ defense\ +=\ 1;}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ leveled\ up\ to\ "{}}\ +\ to\_string(level));}
+\DoxyCodeLine{00316\ \ \ \ \ \}}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ takeDamage(\textcolor{keywordtype}{int}\ d)\ \{}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ hp\ -\/=\ d;}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hp\ <\ 0)\ hp\ =\ 0;}
+\DoxyCodeLine{00321\ \ \ \ \ \}}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ getHP()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ hp;\ \}}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ getMana()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mana;\ \}}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ getDefense()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ defense;\ \}}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordtype}{string}\ getName()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ name;\ \}}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordtype}{int}\ getLevel()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ level;\ \}\ \textcolor{comment}{//\ Додано\ для\ тестів}}
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{keywordtype}{int}\ getAttackPower()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ attackPower;\ \}\ \textcolor{comment}{//\ Додано\ для\ тестів}}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ status()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ name\ +\ \textcolor{stringliteral}{"{}\ (lvl\ "{}}\ +\ to\_string(level)\ +\ \textcolor{stringliteral}{"{})\ HP:"{}}\ +\ to\_string(hp)\ +\ \textcolor{stringliteral}{"{}\ MP:"{}}\ +\ to\_string(mana);}
+\DoxyCodeLine{00332\ \ \ \ \ \}}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ overallPower()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ p\ =\ attackPower\ +\ level\ *\ 3;}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ s\ :\ ownedSkills)\ p\ +=\ s-\/>effectivePower()\ /\ 2;}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00338\ \ \ \ \ \}}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \mbox{\hyperlink{class_inventory}{Inventory<Item>}}\&\ getInventory()\ \{\ \textcolor{keywordflow}{return}\ inventory;\ \}}
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ skillCount()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ ownedSkills.size();\ \}}
+\DoxyCodeLine{00342\ \};}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \textcolor{comment}{/*\ Derived\ classes:\ Warrior,\ Mage,\ Archer\ */}}
+\DoxyCodeLine{00345\ \textcolor{keyword}{class\ }Warrior\ :\ \textcolor{keyword}{public}\ Character\ \{}
+\DoxyCodeLine{00346\ \textcolor{comment}{//\ ...\ (весь\ код\ Warrior)\ ...}}
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keywordtype}{int}\ rage;}
+\DoxyCodeLine{00348\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00349\ \ \ \ \ Warrior(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n,\ \mbox{\hyperlink{class_logger}{Logger}}\&\ log)\ :\ Character(n,\ log),\ rage(0)\ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ attackPower\ +=\ 5;}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ defense\ +=\ 3;}
+\DoxyCodeLine{00352\ \ \ \ \ \}}
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keywordtype}{int}\ attack(Character\&\ target)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ rage\ =\ min(100,\ rage\ +\ 10);}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ base\ =\ Character::attack(target);}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rage\ >=\ 50)\ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bonus\ =\ 5\ +\ level;}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ target.takeDamage(bonus);}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ uses\ RAGE\ bonus\ for\ "{}}\ +\ to\_string(bonus)\ +\ \textcolor{stringliteral}{"{}\ extra\ dmg!"{}});}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ rage\ =\ 0;}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base\ +\ bonus;}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ base;}
+\DoxyCodeLine{00364\ \ \ \ \ \}}
+\DoxyCodeLine{00365\ \ \ \ \ \textcolor{keywordtype}{void}\ battleShout()\ \{}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ attackPower\ +=\ 2;}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ shouts\ and\ increases\ attack!"{}});}
+\DoxyCodeLine{00368\ \ \ \ \ \}}
+\DoxyCodeLine{00369\ \};}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \textcolor{keyword}{class\ }Mage\ :\ \textcolor{keyword}{public}\ Character\ \{}
+\DoxyCodeLine{00372\ \textcolor{comment}{//\ ...\ (весь\ код\ Mage)\ ...}}
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{keywordtype}{int}\ spellPower;}
+\DoxyCodeLine{00374\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00375\ \ \ \ \ Mage(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n,\ \mbox{\hyperlink{class_logger}{Logger}}\&\ log)\ :\ Character(n,\ log),\ spellPower(10)\ \{}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ mana\ +=\ 30;}
+\DoxyCodeLine{00377\ \ \ \ \ \}}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keywordtype}{void}\ useSkill(\textcolor{keywordtype}{size\_t}\ idx,\ Character\&\ target)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (idx\ >=\ skillCount())\ \{\ logger.log(\textcolor{stringliteral}{"{}Invalid\ skill\ idx"{}},\ Logger::WARN);\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_skill}{Skill}}*\ sk\ =\ ownedSkills[idx].get();}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sk)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Спрощена\ логіка\ вартості\ мани\ для\ тестування}}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cost\ =\ 0;}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ active\_sk\ =\ \textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{class_active_skill}{ActiveSkill}}*\textcolor{keyword}{>}(sk))\ \{}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Спрощено:\ беремо\ базову\ вартість,\ якщо\ вона\ є,\ або\ фіксовану}}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ cost\ =\ active\_sk-\/>getManaCost();}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ cost\ =\ max(5,\ sk-\/>effectivePower()\ /\ 3);\ \textcolor{comment}{//\ Ваша\ оригінальна\ логіка}}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mana\ <\ cost)\ \{}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ doesn't\ have\ enough\ mana\ ("{}}\ +\ to\_string(mana)\ +\ \textcolor{stringliteral}{"{})\ to\ cast\ "{}}\ +\ sk-\/>getName(),\ Logger::WARN);}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ mana\ -\/=\ cost;}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ casts\ "{}}\ +\ sk-\/>getName()\ +\ \textcolor{stringliteral}{"{}\ costing\ "{}}\ +\ to\_string(cost)\ +\ \textcolor{stringliteral}{"{}\ mana."{}});}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ sk-\/>apply(target);}
+\DoxyCodeLine{00399\ \ \ \ \ \}}
+\DoxyCodeLine{00400\ \ \ \ \ \textcolor{keywordtype}{int}\ getSpellPower()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ spellPower;\ \}}
+\DoxyCodeLine{00401\ \};}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ \textcolor{keyword}{class\ }Archer\ :\ \textcolor{keyword}{public}\ Character\ \{}
+\DoxyCodeLine{00404\ \textcolor{comment}{//\ ...\ (весь\ код\ Archer)\ ...}}
+\DoxyCodeLine{00405\ \ \ \ \ \textcolor{keywordtype}{int}\ agility;}
+\DoxyCodeLine{00406\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00407\ \ \ \ \ Archer(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ n,\ \mbox{\hyperlink{class_logger}{Logger}}\&\ log)\ :\ Character(n,\ log),\ agility(12)\ \{}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ attackPower\ +=\ 2;}
+\DoxyCodeLine{00409\ \ \ \ \ \}}
+\DoxyCodeLine{00410\ \ \ \ \ \textcolor{keywordtype}{int}\ attack(Character\&\ target)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ chance\ =\ min(50,\ agility\ +\ level);}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ rand()\ \%\ 100;}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ <\ chance)\ \{}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\ =\ Character::attack(target)\ +\ 7;}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ lands\ a\ CRITICAL\ hit!"{}});}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dmg;}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Character::attack(target);}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00421\ \ \ \ \ \}}
+\DoxyCodeLine{00422\ \ \ \ \ \textcolor{keywordtype}{void}\ dodge()\ \{}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ defense\ +=\ 2;}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ logger.log(name\ +\ \textcolor{stringliteral}{"{}\ prepares\ to\ dodge,\ defense\ increased\ temporarily."{}});}
+\DoxyCodeLine{00425\ \ \ \ \ \}}
+\DoxyCodeLine{00426\ \};}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \textcolor{comment}{/*\ Implementations\ of\ Skill::apply\ */}}
+\DoxyCodeLine{00429\ \textcolor{keywordtype}{void}\ ActiveSkill::apply(\mbox{\hyperlink{class_character}{Character}}\&\ target)\ \{}
+\DoxyCodeLine{00430\ \ \ \ \ \textcolor{keywordtype}{int}\ p\ =\ effectivePower();}
+\DoxyCodeLine{00431\ \ \ \ \ \textcolor{keywordtype}{int}\ variance\ =\ rand()\ \%\ 5;}
+\DoxyCodeLine{00432\ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\ =\ max(1,\ p\ +\ variance\ -\/\ target.getDefense());}
+\DoxyCodeLine{00433\ \ \ \ \ target.takeDamage(dmg);}
+\DoxyCodeLine{00434\ \ \ \ \ \textcolor{comment}{//\ cout\ <<\ "{}ActiveSkill\ "{}\ <<\ name\ <<\ "{}\ applied\ to\ "{}\ <<\ target.getName()\ <<\ "{}\ for\ "{}\ <<\ dmg\ <<\ "{}\ damage\(\backslash\)n"{};}}
+\DoxyCodeLine{00435\ \}}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \textcolor{keywordtype}{void}\ PassiveSkill::apply(\mbox{\hyperlink{class_character}{Character}}\&\ target)\ \{}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{comment}{//\ В\ юніт-\/тестах\ пасивні\ навички\ зазвичай\ перевіряються\ через\ їхній}}
+\DoxyCodeLine{00439\ \ \ \ \ \textcolor{comment}{//\ вплив\ на\ overallPower\ або\ через\ зміну\ статів\ (якщо\ б\ вони\ могли\ їх\ міняти)}}
+\DoxyCodeLine{00440\ \ \ \ \ \textcolor{comment}{//\ cout\ <<\ "{}PassiveSkill\ "{}\ <<\ name\ <<\ "{}\ applied\ to\ "{}\ <<\ target.getName()\ <<\ "{}\ (passive\ buff)\(\backslash\)n"{};}}
+\DoxyCodeLine{00441\ \}}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ \textcolor{keywordtype}{void}\ UltimateSkill::apply(\mbox{\hyperlink{class_character}{Character}}\&\ target)\ \{}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{keywordtype}{int}\ p\ =\ effectivePower();}
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\ =\ max(5,\ p\ -\/\ target.getDefense());}
+\DoxyCodeLine{00446\ \ \ \ \ target.takeDamage(dmg);}
+\DoxyCodeLine{00447\ \ \ \ \ \textcolor{comment}{//\ cout\ <<\ "{}UltimateSkill\ "{}\ <<\ name\ <<\ "{}\ strikes\ "{}\ <<\ target.getName()\ <<\ "{}\ for\ "{}\ <<\ dmg\ <<\ "{}\ massive\ damage!\(\backslash\)n"{};}}
+\DoxyCodeLine{00448\ \}}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00450\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Party\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00451\ \textcolor{keyword}{class\ }Party\ \{}
+\DoxyCodeLine{00452\ \textcolor{comment}{//\ ...\ (весь\ код\ Party)\ ...}}
+\DoxyCodeLine{00453\ \ \ \ \ vector<unique\_ptr<Character>>\ members;}
+\DoxyCodeLine{00454\ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}\&\ logger;}
+\DoxyCodeLine{00455\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00456\ \ \ \ \ Party(\mbox{\hyperlink{class_logger}{Logger}}\&\ log)\ :\ logger(log)\ \{\}}
+\DoxyCodeLine{00457\ \ \ \ \ \textcolor{keywordtype}{void}\ addMember(unique\_ptr<Character>\ c)\ \{}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ logger.log(\textcolor{stringliteral}{"{}Adding\ member\ "{}}\ +\ c-\/>getName());}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ members.push\_back(move(c));}
+\DoxyCodeLine{00460\ \ \ \ \ \}}
+\DoxyCodeLine{00461\ \ \ \ \ \mbox{\hyperlink{class_character}{Character}}*\ getMember(\textcolor{keywordtype}{size\_t}\ idx)\ \{}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (idx\ >=\ members.size())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ members[idx].get();}
+\DoxyCodeLine{00464\ \ \ \ \ \}}
+\DoxyCodeLine{00465\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ members.size();\ \}}
+\DoxyCodeLine{00466\ }
+\DoxyCodeLine{00467\ \ \ \ \ \textcolor{keywordtype}{int}\ combinedPower()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sum\ =\ 0;}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ m\ :\ members)\ sum\ +=\ m-\/>overallPower();}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sum;}
+\DoxyCodeLine{00471\ \ \ \ \ \}}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00473\ \ \ \ \ \textcolor{keywordtype}{void}\ showStatus()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ logger.log(\textcolor{stringliteral}{"{}Party\ status:"{}});}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ m\ :\ members)\ cout\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ m-\/>status()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00476\ \ \ \ \ \}}
+\DoxyCodeLine{00477\ \};}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00479\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ BattleSimulator\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00480\ \textcolor{keyword}{class\ }BattleSimulator\ \{}
+\DoxyCodeLine{00481\ \textcolor{comment}{//\ ...\ (весь\ код\ BattleSimulator)\ ...}}
+\DoxyCodeLine{00482\ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}\&\ logger;}
+\DoxyCodeLine{00483\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00484\ \ \ \ \ BattleSimulator(\mbox{\hyperlink{class_logger}{Logger}}\&\ log)\ :\ logger(log)\ \{\}}
+\DoxyCodeLine{00485\ \ \ \ \ \textcolor{keywordtype}{void}\ simulate(\mbox{\hyperlink{class_party}{Party}}\&\ a,\ \mbox{\hyperlink{class_party}{Party}}\&\ b)\ \{}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ logger.log(\textcolor{stringliteral}{"{}Battle\ starts\ between\ two\ parties!"{}});}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ turn\ =\ 0;}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (turn\ <\ 50)\ \{}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (allDead(a))\ \{\ logger.log(\textcolor{stringliteral}{"{}Party\ A\ defeated!"{}});\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (allDead(b))\ \{\ logger.log(\textcolor{stringliteral}{"{}Party\ B\ defeated!"{}});\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character}{Character}}*\ ca\ =\ randomAlive(a);}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character}{Character}}*\ cb\ =\ randomAlive(b);}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ca\ ||\ !cb)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00495\ }
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (turn\ \%\ 2\ ==\ 0)\ \{}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ca-\/>attack(*cb);}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cb-\/>attack(*ca);}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ turn++;}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ logger.log(\textcolor{stringliteral}{"{}Battle\ ended\ after\ max\ turns."{}});}
+\DoxyCodeLine{00505\ \ \ \ \ \}}
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00507\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00508\ \ \ \ \ \textcolor{keywordtype}{bool}\ allDead(\mbox{\hyperlink{class_party}{Party}}\&\ p)\ \{}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;i\ <\ p.size();++i)\ \{}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character}{Character}}*\ c\ =\ p.getMember(i);}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ \&\&\ c-\/>getHP()\ >\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00514\ \ \ \ \ \}}
+\DoxyCodeLine{00515\ \ \ \ \ \mbox{\hyperlink{class_character}{Character}}*\ randomAlive(\mbox{\hyperlink{class_party}{Party}}\&\ p)\ \{}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ vector<Character*>\ alive;}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;i\ <\ p.size();++i)\ \{}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character}{Character}}*\ c\ =\ p.getMember(i);}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ \&\&\ c-\/>getHP()\ >\ 0)\ alive.push\_back(c);}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alive.empty())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ alive[rand()\ \%\ alive.size()];}
+\DoxyCodeLine{00523\ \ \ \ \ \}}
+\DoxyCodeLine{00524\ \};}
+\DoxyCodeLine{00525\ }
+\DoxyCodeLine{00526\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Helper\ skill\ factory\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00527\ \mbox{\hyperlink{class_skill}{Skill}}*\ randomSkillFactory()\ \{}
+\DoxyCodeLine{00528\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ counter\ =\ 0;}
+\DoxyCodeLine{00529\ \ \ \ \ counter++;}
+\DoxyCodeLine{00530\ \ \ \ \ \textcolor{keywordtype}{int}\ t\ =\ rand()\ \%\ 3;}
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ ==\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_active_skill}{ActiveSkill}}(\textcolor{stringliteral}{"{}Active\_"{}}\ +\ to\_string(counter),\ 10\ +\ (counter\ \%\ 5));}
+\DoxyCodeLine{00532\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ ==\ 1)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_passive_skill}{PassiveSkill}}(\textcolor{stringliteral}{"{}Passive\_"{}}\ +\ to\_string(counter),\ 5\ +\ (counter\ \%\ 3));}
+\DoxyCodeLine{00533\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_ultimate_skill}{UltimateSkill}}(\textcolor{stringliteral}{"{}Ult\_"{}}\ +\ to\_string(counter),\ 25\ +\ (counter\ \%\ 8));}
+\DoxyCodeLine{00534\ \}}
+\DoxyCodeLine{00535\ }
+\DoxyCodeLine{00536\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DANILKA\_RPG\_ENGINE\_H}}
+
+\end{DoxyCode}

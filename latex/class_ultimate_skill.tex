@@ -1,0 +1,88 @@
+\doxysection{Ultimate\+Skill Class Reference}
+\hypertarget{class_ultimate_skill}{}\label{class_ultimate_skill}\index{UltimateSkill@{UltimateSkill}}
+Inheritance diagram for Ultimate\+Skill\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_ultimate_skill}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ultimate_skill_a04157a2db033891e8cdabab138e4626b}\label{class_ultimate_skill_a04157a2db033891e8cdabab138e4626b} 
+{\bfseries Ultimate\+Skill} (const string \&n, int p=30, int cost=30, int cd=3)
+\item 
+int \mbox{\hyperlink{class_ultimate_skill_a4354cff6b0044e8404e3bfa10b1bd7e4}{effective\+Power}} () const override
+\item 
+string \mbox{\hyperlink{class_ultimate_skill_a004ecd3e10bd9a132fb5b04470e21856}{description}} () const override
+\item 
+void \mbox{\hyperlink{class_ultimate_skill_a3ee88be38cc48171717b448b92b96787}{apply}} (\mbox{\hyperlink{class_character}{Character}} \&target) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_active_skill}{Active\+Skill}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Active\+Skill} (const string \&n, int p=12, int cost=10)
+\item 
+int {\bfseries get\+Mana\+Cost} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_skill}{Skill}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Skill} (const string \&n, int p=10)
+\item 
+virtual void {\bfseries upgrade} ()
+\item 
+string {\bfseries get\+Name} () const
+\item 
+int {\bfseries get\+Level} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_skill}{Skill}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries name}
+\item 
+int {\bfseries level}
+\item 
+int {\bfseries base\+Power}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_ultimate_skill_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ultimate_skill_a3ee88be38cc48171717b448b92b96787}\index{UltimateSkill@{UltimateSkill}!apply@{apply}}
+\index{apply@{apply}!UltimateSkill@{UltimateSkill}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily \label{class_ultimate_skill_a3ee88be38cc48171717b448b92b96787} 
+void Ultimate\+Skill\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_character}{Character}} \&}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_active_skill}{Active\+Skill}}.
+
+\Hypertarget{class_ultimate_skill_a004ecd3e10bd9a132fb5b04470e21856}\index{UltimateSkill@{UltimateSkill}!description@{description}}
+\index{description@{description}!UltimateSkill@{UltimateSkill}}
+\doxysubsubsection{\texorpdfstring{description()}{description()}}
+{\footnotesize\ttfamily \label{class_ultimate_skill_a004ecd3e10bd9a132fb5b04470e21856} 
+string Ultimate\+Skill\+::description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_active_skill}{Active\+Skill}}.
+
+\Hypertarget{class_ultimate_skill_a4354cff6b0044e8404e3bfa10b1bd7e4}\index{UltimateSkill@{UltimateSkill}!effectivePower@{effectivePower}}
+\index{effectivePower@{effectivePower}!UltimateSkill@{UltimateSkill}}
+\doxysubsubsection{\texorpdfstring{effectivePower()}{effectivePower()}}
+{\footnotesize\ttfamily \label{class_ultimate_skill_a4354cff6b0044e8404e3bfa10b1bd7e4} 
+int Ultimate\+Skill\+::effective\+Power (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_active_skill}{Active\+Skill}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rpg\+\_\+engine.\+h\end{DoxyCompactItemize}

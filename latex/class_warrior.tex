@@ -1,0 +1,94 @@
+\doxysection{Warrior Class Reference}
+\hypertarget{class_warrior}{}\label{class_warrior}\index{Warrior@{Warrior}}
+Inheritance diagram for Warrior\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_warrior}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_warrior_a7fe2f93328bbcef3afbce1b39455a90a}\label{class_warrior_a7fe2f93328bbcef3afbce1b39455a90a} 
+{\bfseries Warrior} (const string \&n, \mbox{\hyperlink{class_logger}{Logger}} \&log)
+\item 
+int \mbox{\hyperlink{class_warrior_a00b9cbeb4242cc1dee9664a1666ce2bc}{attack}} (\mbox{\hyperlink{class_character}{Character}} \&target) override
+\item 
+\Hypertarget{class_warrior_ac4f38385de57ce4af288810c990434e3}\label{class_warrior_ac4f38385de57ce4af288810c990434e3} 
+void {\bfseries battle\+Shout} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_character}{Character}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Character} (const string \&n, \mbox{\hyperlink{class_logger}{Logger}} \&log)
+\item 
+virtual void {\bfseries use\+Skill} (size\+\_\+t idx, \mbox{\hyperlink{class_character}{Character}} \&target)
+\item 
+virtual void {\bfseries equip\+Skill} (unique\+\_\+ptr$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ s)
+\item 
+virtual void {\bfseries level\+Up} ()
+\item 
+virtual void {\bfseries take\+Damage} (int d)
+\item 
+virtual int {\bfseries get\+HP} () const
+\item 
+virtual int {\bfseries get\+Mana} () const
+\item 
+virtual int {\bfseries get\+Defense} () const
+\item 
+string {\bfseries get\+Name} () const
+\item 
+int {\bfseries get\+Level} () const
+\item 
+int {\bfseries get\+Attack\+Power} () const
+\item 
+virtual string {\bfseries status} () const
+\item 
+virtual int {\bfseries overall\+Power} () const
+\item 
+\mbox{\hyperlink{class_inventory}{Inventory}}$<$ \mbox{\hyperlink{class_item}{Item}} $>$ \& {\bfseries get\+Inventory} ()
+\item 
+size\+\_\+t {\bfseries skill\+Count} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_character}{Character}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries name}
+\item 
+int {\bfseries hp}
+\item 
+int {\bfseries mana}
+\item 
+int {\bfseries attack\+Power}
+\item 
+int {\bfseries defense}
+\item 
+int {\bfseries level}
+\item 
+vector$<$ unique\+\_\+ptr$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ $>$ {\bfseries owned\+Skills}
+\item 
+\mbox{\hyperlink{class_inventory}{Inventory}}$<$ \mbox{\hyperlink{class_item}{Item}} $>$ {\bfseries inventory}
+\item 
+\mbox{\hyperlink{class_logger}{Logger}} \& {\bfseries logger}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_warrior_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_warrior_a00b9cbeb4242cc1dee9664a1666ce2bc}\index{Warrior@{Warrior}!attack@{attack}}
+\index{attack@{attack}!Warrior@{Warrior}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily \label{class_warrior_a00b9cbeb4242cc1dee9664a1666ce2bc} 
+int Warrior\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_character}{Character}} \&}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_character}{Character}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rpg\+\_\+engine.\+h\end{DoxyCompactItemize}

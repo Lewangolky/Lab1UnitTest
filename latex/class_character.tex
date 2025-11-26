@@ -1,0 +1,94 @@
+\doxysection{Character Class Reference}
+\hypertarget{class_character}{}\label{class_character}\index{Character@{Character}}
+Inheritance diagram for Character\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_character}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_character_abf37bbfdf59eb5479edd716deb4c0ad7}\label{class_character_abf37bbfdf59eb5479edd716deb4c0ad7} 
+{\bfseries Character} (const string \&n, \mbox{\hyperlink{class_logger}{Logger}} \&log)
+\item 
+\Hypertarget{class_character_a2a186b7dfb3aebfeec9a10b20709c96f}\label{class_character_a2a186b7dfb3aebfeec9a10b20709c96f} 
+virtual int {\bfseries attack} (\mbox{\hyperlink{class_character}{Character}} \&target)
+\item 
+\Hypertarget{class_character_ae998b618e10de1572fec1f8a115a0cdc}\label{class_character_ae998b618e10de1572fec1f8a115a0cdc} 
+virtual void {\bfseries use\+Skill} (size\+\_\+t idx, \mbox{\hyperlink{class_character}{Character}} \&target)
+\item 
+\Hypertarget{class_character_a739805dbd80d2701cbe0ba9e2ab3d5aa}\label{class_character_a739805dbd80d2701cbe0ba9e2ab3d5aa} 
+virtual void {\bfseries equip\+Skill} (unique\+\_\+ptr$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ s)
+\item 
+\Hypertarget{class_character_a8a9b74bdb758b6a860cf29a434846f26}\label{class_character_a8a9b74bdb758b6a860cf29a434846f26} 
+virtual void {\bfseries level\+Up} ()
+\item 
+\Hypertarget{class_character_ab970cde9a823636f2df81743e6134773}\label{class_character_ab970cde9a823636f2df81743e6134773} 
+virtual void {\bfseries take\+Damage} (int d)
+\item 
+\Hypertarget{class_character_a1efad83b621dc115ccfafb4387723137}\label{class_character_a1efad83b621dc115ccfafb4387723137} 
+virtual int {\bfseries get\+HP} () const
+\item 
+\Hypertarget{class_character_a73523ff293bc83651a46f6d804e198c9}\label{class_character_a73523ff293bc83651a46f6d804e198c9} 
+virtual int {\bfseries get\+Mana} () const
+\item 
+\Hypertarget{class_character_ae7fec7f1b772a8a189419da787f50996}\label{class_character_ae7fec7f1b772a8a189419da787f50996} 
+virtual int {\bfseries get\+Defense} () const
+\item 
+\Hypertarget{class_character_a45625b5ce71c8dbdc6f3ac04f7a7624d}\label{class_character_a45625b5ce71c8dbdc6f3ac04f7a7624d} 
+string {\bfseries get\+Name} () const
+\item 
+\Hypertarget{class_character_a06713215a5850ec92194a1a711fb8cd7}\label{class_character_a06713215a5850ec92194a1a711fb8cd7} 
+int {\bfseries get\+Level} () const
+\item 
+\Hypertarget{class_character_a53f2907282a51f3ad6a8152967eb2e05}\label{class_character_a53f2907282a51f3ad6a8152967eb2e05} 
+int {\bfseries get\+Attack\+Power} () const
+\item 
+\Hypertarget{class_character_af921ade786f6cb64f24f199e9adbe37e}\label{class_character_af921ade786f6cb64f24f199e9adbe37e} 
+virtual string {\bfseries status} () const
+\item 
+\Hypertarget{class_character_a3755fc0e7323905fad45a1e3e66c6d48}\label{class_character_a3755fc0e7323905fad45a1e3e66c6d48} 
+virtual int {\bfseries overall\+Power} () const
+\item 
+\Hypertarget{class_character_a51a643feb6be0ad91523cbba2ee8c2d7}\label{class_character_a51a643feb6be0ad91523cbba2ee8c2d7} 
+\mbox{\hyperlink{class_inventory}{Inventory}}$<$ \mbox{\hyperlink{class_item}{Item}} $>$ \& {\bfseries get\+Inventory} ()
+\item 
+\Hypertarget{class_character_ae4c636496a80b1c4cf5d79253b4a7099}\label{class_character_ae4c636496a80b1c4cf5d79253b4a7099} 
+size\+\_\+t {\bfseries skill\+Count} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_character_a2d423654566d1bf2160fef74bf04cc84}\label{class_character_a2d423654566d1bf2160fef74bf04cc84} 
+string {\bfseries name}
+\item 
+\Hypertarget{class_character_a273353643988a87a0ce03cff3870b2d9}\label{class_character_a273353643988a87a0ce03cff3870b2d9} 
+int {\bfseries hp}
+\item 
+\Hypertarget{class_character_a76946523d3821f6b2bffba2da1bcffd6}\label{class_character_a76946523d3821f6b2bffba2da1bcffd6} 
+int {\bfseries mana}
+\item 
+\Hypertarget{class_character_ac1c673b9fc670f1e3007a22e9d0d616d}\label{class_character_ac1c673b9fc670f1e3007a22e9d0d616d} 
+int {\bfseries attack\+Power}
+\item 
+\Hypertarget{class_character_afbcf2bebcbe06be8c99fab9d2abfecf3}\label{class_character_afbcf2bebcbe06be8c99fab9d2abfecf3} 
+int {\bfseries defense}
+\item 
+\Hypertarget{class_character_af15a478fe650b87f59cbe5d071697307}\label{class_character_af15a478fe650b87f59cbe5d071697307} 
+int {\bfseries level}
+\item 
+\Hypertarget{class_character_a8dc3112370969cbf36b8327d074c7a51}\label{class_character_a8dc3112370969cbf36b8327d074c7a51} 
+vector$<$ unique\+\_\+ptr$<$ \mbox{\hyperlink{class_skill}{Skill}} $>$ $>$ {\bfseries owned\+Skills}
+\item 
+\Hypertarget{class_character_a4ff40f2915d8241587f9a380336bf4ce}\label{class_character_a4ff40f2915d8241587f9a380336bf4ce} 
+\mbox{\hyperlink{class_inventory}{Inventory}}$<$ \mbox{\hyperlink{class_item}{Item}} $>$ {\bfseries inventory}
+\item 
+\Hypertarget{class_character_a739147b20cea2f5c836307033a17c7e5}\label{class_character_a739147b20cea2f5c836307033a17c7e5} 
+\mbox{\hyperlink{class_logger}{Logger}} \& {\bfseries logger}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rpg\+\_\+engine.\+h\end{DoxyCompactItemize}

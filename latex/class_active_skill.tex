@@ -1,0 +1,84 @@
+\doxysection{Active\+Skill Class Reference}
+\hypertarget{class_active_skill}{}\label{class_active_skill}\index{ActiveSkill@{ActiveSkill}}
+Inheritance diagram for Active\+Skill\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_active_skill}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_active_skill_a1e6c231d24025cb83de8628c1a49053f}\label{class_active_skill_a1e6c231d24025cb83de8628c1a49053f} 
+{\bfseries Active\+Skill} (const string \&n, int p=12, int cost=10)
+\item 
+int \mbox{\hyperlink{class_active_skill_a7ea26c191fd62ba45a333b13fe224861}{effective\+Power}} () const override
+\item 
+string \mbox{\hyperlink{class_active_skill_a5c61209be4e29a72e18cc011f9b88531}{description}} () const override
+\item 
+void \mbox{\hyperlink{class_active_skill_adc5ad71b1ebf0aad8cdeb927d50af933}{apply}} (\mbox{\hyperlink{class_character}{Character}} \&target) override
+\item 
+\Hypertarget{class_active_skill_abfc34cd693ed2b2cccd23d0e20013a90}\label{class_active_skill_abfc34cd693ed2b2cccd23d0e20013a90} 
+int {\bfseries get\+Mana\+Cost} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_skill}{Skill}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Skill} (const string \&n, int p=10)
+\item 
+virtual void {\bfseries upgrade} ()
+\item 
+string {\bfseries get\+Name} () const
+\item 
+int {\bfseries get\+Level} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_skill}{Skill}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries name}
+\item 
+int {\bfseries level}
+\item 
+int {\bfseries base\+Power}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_active_skill_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_active_skill_adc5ad71b1ebf0aad8cdeb927d50af933}\index{ActiveSkill@{ActiveSkill}!apply@{apply}}
+\index{apply@{apply}!ActiveSkill@{ActiveSkill}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily \label{class_active_skill_adc5ad71b1ebf0aad8cdeb927d50af933} 
+void Active\+Skill\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_character}{Character}} \&}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_skill}{Skill}}.
+
+\Hypertarget{class_active_skill_a5c61209be4e29a72e18cc011f9b88531}\index{ActiveSkill@{ActiveSkill}!description@{description}}
+\index{description@{description}!ActiveSkill@{ActiveSkill}}
+\doxysubsubsection{\texorpdfstring{description()}{description()}}
+{\footnotesize\ttfamily \label{class_active_skill_a5c61209be4e29a72e18cc011f9b88531} 
+string Active\+Skill\+::description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_skill}{Skill}}.
+
+\Hypertarget{class_active_skill_a7ea26c191fd62ba45a333b13fe224861}\index{ActiveSkill@{ActiveSkill}!effectivePower@{effectivePower}}
+\index{effectivePower@{effectivePower}!ActiveSkill@{ActiveSkill}}
+\doxysubsubsection{\texorpdfstring{effectivePower()}{effectivePower()}}
+{\footnotesize\ttfamily \label{class_active_skill_a7ea26c191fd62ba45a333b13fe224861} 
+int Active\+Skill\+::effective\+Power (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_skill}{Skill}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rpg\+\_\+engine.\+h\end{DoxyCompactItemize}

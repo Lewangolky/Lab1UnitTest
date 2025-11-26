@@ -1,0 +1,81 @@
+\doxysection{Passive\+Skill Class Reference}
+\hypertarget{class_passive_skill}{}\label{class_passive_skill}\index{PassiveSkill@{PassiveSkill}}
+Inheritance diagram for Passive\+Skill\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_passive_skill}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_passive_skill_a879c7a120a9d4fb66203f0395b623f7a}\label{class_passive_skill_a879c7a120a9d4fb66203f0395b623f7a} 
+{\bfseries Passive\+Skill} (const string \&n, int p=5, double mod=0.\+05)
+\item 
+int \mbox{\hyperlink{class_passive_skill_ac68fd1abdd30e44c837451a81464a5c4}{effective\+Power}} () const override
+\item 
+string \mbox{\hyperlink{class_passive_skill_ad476ef35b70b8e41548600af758c887c}{description}} () const override
+\item 
+void \mbox{\hyperlink{class_passive_skill_abcf2038392346db9d9e566900c1b1ecc}{apply}} (\mbox{\hyperlink{class_character}{Character}} \&target) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_skill}{Skill}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Skill} (const string \&n, int p=10)
+\item 
+virtual void {\bfseries upgrade} ()
+\item 
+string {\bfseries get\+Name} () const
+\item 
+int {\bfseries get\+Level} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_skill}{Skill}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries name}
+\item 
+int {\bfseries level}
+\item 
+int {\bfseries base\+Power}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_passive_skill_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_passive_skill_abcf2038392346db9d9e566900c1b1ecc}\index{PassiveSkill@{PassiveSkill}!apply@{apply}}
+\index{apply@{apply}!PassiveSkill@{PassiveSkill}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily \label{class_passive_skill_abcf2038392346db9d9e566900c1b1ecc} 
+void Passive\+Skill\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_character}{Character}} \&}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_skill}{Skill}}.
+
+\Hypertarget{class_passive_skill_ad476ef35b70b8e41548600af758c887c}\index{PassiveSkill@{PassiveSkill}!description@{description}}
+\index{description@{description}!PassiveSkill@{PassiveSkill}}
+\doxysubsubsection{\texorpdfstring{description()}{description()}}
+{\footnotesize\ttfamily \label{class_passive_skill_ad476ef35b70b8e41548600af758c887c} 
+string Passive\+Skill\+::description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_skill}{Skill}}.
+
+\Hypertarget{class_passive_skill_ac68fd1abdd30e44c837451a81464a5c4}\index{PassiveSkill@{PassiveSkill}!effectivePower@{effectivePower}}
+\index{effectivePower@{effectivePower}!PassiveSkill@{PassiveSkill}}
+\doxysubsubsection{\texorpdfstring{effectivePower()}{effectivePower()}}
+{\footnotesize\ttfamily \label{class_passive_skill_ac68fd1abdd30e44c837451a81464a5c4} 
+int Passive\+Skill\+::effective\+Power (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_skill}{Skill}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rpg\+\_\+engine.\+h\end{DoxyCompactItemize}

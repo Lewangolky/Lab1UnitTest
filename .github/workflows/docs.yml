@@ -1,0 +1,43 @@
+name: Build and Deploy Docs   
+
+on:
+  push:
+    branches:
+      - main                  
+      - feature/docs-ci       
+  workflow_dispatch:          
+
+jobs:
+  build:
+    runs-on: ubuntu-latest    
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU (optional)
+
+      - name: Install Doxygen and Graphviz
+        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+
+      - name: Generate documentation
+        run: doxygen Doxyfile
+
+      - name: List html output (debug)
+        run: ls -la html || true
+
+      - name: Upload documentation artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write            
+      id-token: write         
+
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

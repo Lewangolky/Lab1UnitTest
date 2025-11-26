@@ -16,12 +16,13 @@
 
 using namespace std;
 
-/*
-   1   +
-  : Skill Trees + Characters
-*/
-
-/* --------------------- Logger --------------------- */
+/**
+ * @brief Простіший клас для логування повідомлень.
+ *
+ * Дозволяє виводити інформаційні, попереджувальні та помилкові повідомлення.
+ * Використовується усіма класами системи.
+ * 
+ */
 class Logger {
 public:
     enum Level { INFO, WARN, ERROR };
@@ -31,8 +32,7 @@ public:
     Logger(Level l = INFO) : level(l) {}
     void log(const string& msg, Level l = INFO) {
         if (l >= level) {
-            // У тестах вивід може бути небажаним, тому можна його вимкнути
-            // cout << "[" << levelName(l) << "] " << msg << "\n";
+            
         }
     }
     static string levelName(Level l) {
@@ -44,9 +44,7 @@ public:
     }
 };
 
-/* --------------------- Item (helper) --------------------- */
 class Item {
-// ... (весь код Item) ...
     string name;
     int value;
 public:
@@ -58,10 +56,13 @@ public:
     }
 };
 
-/* --------------------- Inventory (template) --------------------- */
+/**
+ * @brief Шаблонний інвентар для зберігання предметів.
+ *
+ * @tparam T тип об'єкта інвентаря (наприклад Item) 
+ */
 template<typename T>
 class Inventory {
-// ... (весь код Inventory) ...
     vector<T> items;
     size_t capacity;
 public:
@@ -82,46 +83,62 @@ public:
             if (it.getName() == n) return &it;
         return nullptr;
     }
-    vector<T> snapshot() const { return items; } // copy
+    vector<T> snapshot() const { return items; } 
     string toString() const {
         string s = "Inventory(" + to_string(items.size()) + "/" + to_string(capacity) + "): ";
         for (auto& it : items) s += it.str() + " ";
         return s;
     }
-    size_t getSize() const { return items.size(); } // Додано для тестів
+    size_t getSize() const { return items.size(); } 
 };
 
-/* --------------------- Forward declarations --------------------- */
 class Character;
 class Skill;
 
-/* --------------------- Skill hierarchy --------------------- */
+/**
+ * @brief Базовий клас навички персонажа.
+ *
+ * Містить назву, рівень та базову силу навички.
+ * Від нього успадковуються активні, пасивні та ультимативні навички.
+ * 
+ */
 class Skill {
-// ... (весь код Skill) ...
 protected:
     string name;
-    int level;          // level of skill
+    int level;          
     int basePower;
 public:
     Skill(const string& n, int p = 10) : name(n), level(1), basePower(p) {}
     virtual ~Skill() = default;
+    /**
+     * @brief Повертає ефективну силу навички.
+     * @return сила з урахуванням рівня 
+     */
     virtual int effectivePower() const {
         return basePower + level * 3;
     }
+    /**
+     * @brief @brief Повертає текстове описання навички.
+     * @return рядок з описом 
+     */
     virtual string description() const {
         return name + " (lvl " + to_string(level) + ", pwr " + to_string(effectivePower()) + ")";
     }
+    /**
+     * @brief Застосовує навичку до персонажа.
+     * @param target персонаж, до якого застосовується навичка
+     * @throws нічого 
+     */
     virtual void apply(Character& target) = 0; // abstract action on target
     virtual void upgrade() {
         level++;
         basePower = basePower + 2;
     }
     string getName() const { return name; }
-    int getLevel() const { return level; } // Додано для тестів
+    int getLevel() const { return level; } 
 };
 
 class ActiveSkill : public Skill {
-// ... (весь код ActiveSkill) ...
     int manaCost;
 public:
     ActiveSkill(const string& n, int p = 12, int cost = 10) : Skill(n, p), manaCost(cost) {}
@@ -136,7 +153,6 @@ public:
 };
 
 class PassiveSkill : public Skill {
-// ... (весь код PassiveSkill) ...
     double modifier; // e.g., increases defense or attack by percentage
 public:
     PassiveSkill(const string& n, int p = 5, double mod = 0.05) : Skill(n, p), modifier(mod) {}
@@ -150,7 +166,6 @@ public:
 };
 
 class UltimateSkill : public ActiveSkill {
-// ... (весь код UltimateSkill) ...
     int cooldown;
 public:
     UltimateSkill(const string& n, int p = 30, int cost = 30, int cd = 3) : ActiveSkill(n, p, cost), cooldown(cd) {}
@@ -163,9 +178,7 @@ public:
     void apply(Character& target) override;
 };
 
-/* --------------------- SkillTree node --------------------- */
 class SkillTreeNode {
-// ... (весь код SkillTreeNode) ...
     Skill* skill;
     SkillTreeNode* parent;
     vector<unique_ptr<SkillTreeNode>> children;
@@ -180,7 +193,6 @@ public:
         children.push_back(make_unique<SkillTreeNode>(s, this));
         return children.back().get();
     }
-// ... (решта коду SkillTreeNode) ...
     bool removeChildWithSkillName(const string& n) {
         auto it = remove_if(children.begin(), children.end(),
             [&](const unique_ptr<SkillTreeNode>& c) { return c->skill && c->skill->getName() == n; });
@@ -202,10 +214,16 @@ public:
     }
 };
 
-/* --------------------- SkillTree template --------------------- */
+/**
+ * @brief Шаблонне дерево навичок.
+ *
+ * Дозволяє додавати навички у вигляді дерева,
+ * виконувати DFS-обхід та генерацію випадкового дерева.
+ *
+ * @tparam T тип даних у вузлах (зазвичай Skill*)
+ */
 template<typename T>
 class SkillTree {
-// ... (весь код SkillTree) ...
     unique_ptr<SkillTreeNode> root;
 public:
     SkillTree() : root(nullptr) {}
@@ -223,6 +241,11 @@ public:
         return found->addChild(s);
     }
 
+    /**
+     * @brief Пошук вузла за назвою навички.
+     * @param name назва навички
+     * @return вказівник на вузол або nullptr 
+     */
     SkillTreeNode* findNodeBySkillName(const string& name) const {
         if (!root) return nullptr;
         SkillTreeNode* result = nullptr;
@@ -240,7 +263,6 @@ public:
             });
         return out;
     }
-// ... (решта коду SkillTree) ...
     void generateRandom(Skill* (*skillFactory)(), int maxDepth = 3, int maxChildren = 3) {
         root = make_unique<SkillTreeNode>(skillFactory(), nullptr);
         default_random_engine rng((unsigned)chrono::high_resolution_clock::now().time_since_epoch().count());
@@ -261,8 +283,13 @@ public:
 };
 
 /* --------------------- Character hierarchy --------------------- */
+/**
+ * @brief Базовий клас для всіх персонажів гри. 
+ *  
+ * Містить спільні характеристики — HP, mana, attack, defense.
+ * Підтримує атаки, використання навичок та інвентар.
+ */
 class Character {
-// ... (весь код Character) ...
 protected:
     string name;
     int hp;
@@ -280,6 +307,11 @@ public:
 
     virtual ~Character() = default;
 
+    /**
+     * @brief Атакує іншого персонажа.
+     * @param target ціль атаки
+     * @return нанесена шкода
+     */
     virtual int attack(Character& target) {
         int raw = attackPower + level * 2;
         int variance = rand() % (level + 3);
@@ -343,7 +375,6 @@ public:
 
 /* Derived classes: Warrior, Mage, Archer */
 class Warrior : public Character {
-// ... (весь код Warrior) ...
     int rage;
 public:
     Warrior(const string& n, Logger& log) : Character(n, log), rage(0) {
@@ -369,7 +400,6 @@ public:
 };
 
 class Mage : public Character {
-// ... (весь код Mage) ...
     int spellPower;
 public:
     Mage(const string& n, Logger& log) : Character(n, log), spellPower(10) {
@@ -380,13 +410,11 @@ public:
         Skill* sk = ownedSkills[idx].get();
         if (!sk) return;
 
-        // Спрощена логіка вартості мани для тестування
         int cost = 0;
         if (auto active_sk = dynamic_cast<ActiveSkill*>(sk)) {
-             // Спрощено: беремо базову вартість, якщо вона є, або фіксовану
              cost = active_sk->getManaCost();
         } else {
-             cost = max(5, sk->effectivePower() / 3); // Ваша оригінальна логіка
+             cost = max(5, sk->effectivePower() / 3); 
         }
 
         if (mana < cost) {
@@ -401,7 +429,6 @@ public:
 };
 
 class Archer : public Character {
-// ... (весь код Archer) ...
     int agility;
 public:
     Archer(const string& n, Logger& log) : Character(n, log), agility(12) {
@@ -425,7 +452,6 @@ public:
     }
 };
 
-/* Implementations of Skill::apply */
 void ActiveSkill::apply(Character& target) {
     int p = effectivePower();
     int variance = rand() % 5;
@@ -447,9 +473,7 @@ void UltimateSkill::apply(Character& target) {
     // cout << "UltimateSkill " << name << " strikes " << target.getName() << " for " << dmg << " massive damage!\n";
 }
 
-/* --------------------- Party --------------------- */
 class Party {
-// ... (весь код Party) ...
     vector<unique_ptr<Character>> members;
     Logger& logger;
 public:
@@ -476,9 +500,7 @@ public:
     }
 };
 
-/* --------------------- BattleSimulator --------------------- */
 class BattleSimulator {
-// ... (весь код BattleSimulator) ...
     Logger& logger;
 public:
     BattleSimulator(Logger& log) : logger(log) {}
@@ -523,7 +545,6 @@ private:
     }
 };
 
-/* --------------------- Helper skill factory --------------------- */
 Skill* randomSkillFactory() {
     static int counter = 0;
     counter++;
