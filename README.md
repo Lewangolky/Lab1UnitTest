@@ -1,4 +1,5 @@
 # Lab1UnitTest
 
 ## Documentation
-Автоматично згенерована документація доступна за посиланням:
+Документація проекту генерується автоматично через GitHub Actions.
+[Посилання на документацію](https://lewangolky.github.io/Lab1UnitTest/)
